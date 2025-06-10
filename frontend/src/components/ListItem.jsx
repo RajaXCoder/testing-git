@@ -41,6 +41,15 @@ const ListItem = ({ userData }) => {
       }
     );
     console.log(data);
+    window.location.reload();
+  };
+
+  const handleDeleteUser = async () => {
+    const { data } = await axios.delete(
+      `http://localhost:3000/api/users/${userData.id}`
+    );
+    console.log(data);
+    window.location.reload();
   };
 
   // Assuming user is an object with properties: username, email, password, time
@@ -87,7 +96,10 @@ const ListItem = ({ userData }) => {
         )}
       </td>
       <td className="border border-gray-300 p-2">
-        <button className="bg-red-500 border-none cursor-pointer px-3 py-1 rounded-sm text-white">
+        <button
+          className="bg-red-500 border-none cursor-pointer px-3 py-1 rounded-sm text-white"
+          onClick={handleDeleteUser}
+        >
           Delete
         </button>
       </td>

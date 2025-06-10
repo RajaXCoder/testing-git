@@ -12,7 +12,7 @@ const createUser = async (req, res) => {
     res.status(201).json({ message: "User created", userId: result.insertId });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Database error" });
+    res.status(500).json({ error: err.sqlMessage || "Database error" });
   }
 };
 
